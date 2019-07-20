@@ -21,6 +21,7 @@ public:
 	void sayHello() { std::cout << "Hello, Python!\n"; }
 };
 
+// Wrap the Calculator class so that it can be loaded/instantiated in Python
 BOOST_PYTHON_MODULE(BoostPythonTest)
 {
 	using namespace boost::python;

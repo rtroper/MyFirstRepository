@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.29001.49
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BoostPythonTest", "BoostPythonTest\BoostPythonTest.vcxproj", "{D53D3A52-4F52-431B-B3C7-E49524229C22}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RunBoostPythonTest", "RunBoostPythonTest\RunBoostPythonTest.vcxproj", "{079C64FE-1A2F-4506-AF3A-07C1DC30550E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JTurnerTutorial", "JTurnerTutorial\JTurnerTutorial.vcxproj", "{02FD803B-A7E4-4C05-BD91-302A373C81AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +25,22 @@ Global
 		{D53D3A52-4F52-431B-B3C7-E49524229C22}.Release|x64.Build.0 = Release|x64
 		{D53D3A52-4F52-431B-B3C7-E49524229C22}.Release|x86.ActiveCfg = Release|Win32
 		{D53D3A52-4F52-431B-B3C7-E49524229C22}.Release|x86.Build.0 = Release|Win32
+		{079C64FE-1A2F-4506-AF3A-07C1DC30550E}.Debug|x64.ActiveCfg = Debug|x64
+		{079C64FE-1A2F-4506-AF3A-07C1DC30550E}.Debug|x64.Build.0 = Debug|x64
+		{079C64FE-1A2F-4506-AF3A-07C1DC30550E}.Debug|x86.ActiveCfg = Debug|Win32
+		{079C64FE-1A2F-4506-AF3A-07C1DC30550E}.Debug|x86.Build.0 = Debug|Win32
+		{079C64FE-1A2F-4506-AF3A-07C1DC30550E}.Release|x64.ActiveCfg = Release|x64
+		{079C64FE-1A2F-4506-AF3A-07C1DC30550E}.Release|x64.Build.0 = Release|x64
+		{079C64FE-1A2F-4506-AF3A-07C1DC30550E}.Release|x86.ActiveCfg = Release|Win32
+		{079C64FE-1A2F-4506-AF3A-07C1DC30550E}.Release|x86.Build.0 = Release|Win32
+		{02FD803B-A7E4-4C05-BD91-302A373C81AB}.Debug|x64.ActiveCfg = Debug|x64
+		{02FD803B-A7E4-4C05-BD91-302A373C81AB}.Debug|x64.Build.0 = Debug|x64
+		{02FD803B-A7E4-4C05-BD91-302A373C81AB}.Debug|x86.ActiveCfg = Debug|Win32
+		{02FD803B-A7E4-4C05-BD91-302A373C81AB}.Debug|x86.Build.0 = Debug|Win32
+		{02FD803B-A7E4-4C05-BD91-302A373C81AB}.Release|x64.ActiveCfg = Release|x64
+		{02FD803B-A7E4-4C05-BD91-302A373C81AB}.Release|x64.Build.0 = Release|x64
+		{02FD803B-A7E4-4C05-BD91-302A373C81AB}.Release|x86.ActiveCfg = Release|Win32
+		{02FD803B-A7E4-4C05-BD91-302A373C81AB}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
