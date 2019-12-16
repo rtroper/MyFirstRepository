@@ -27,6 +27,14 @@ enum XFMethodID
 	XF_CLEANUP = 99
 };
 
+enum TSDefinitionConstants
+{
+	TS_START_IDX = 1,
+	TS_SIZE_IDX = 8,
+	TS_DATA_START_IDX = 9
+};
+
+
 // Declare global variables that persist between calls from GoldSim to the DLL
 
 
@@ -72,6 +80,7 @@ enum XFStatusID
 extern "C" void __declspec(dllexport) BasicInitialConditionsImport(int methodID, int* status, double* inargs, double* outargs)
 {
 	*status = XF_SUCCESS;
+	std::ofstream output_file;
 
 	switch (methodID)
 	{
@@ -92,17 +101,44 @@ extern "C" void __declspec(dllexport) BasicInitialConditionsImport(int methodID,
 	// outargs[0] is set equal to the # of inputs arguments
 	// outargs[1] is set equal to the # of output arguments
 	case  XF_REP_ARGUMENTS:
-		// No values provided by GoldSim
-		outargs[0] = 0.0;
+		// See what GoldSim sends to the DLL when linked to a Time Series definition
+		outargs[0] = 2.0;
 
-		// Import one value into GoldSim
+		// Must import at least one value into GoldSim
 		outargs[1] = 1.0;
 		break;
 
 	// Normal calculation.
 	// Results are returned as outarg[0], outarg[1], etc. depending on number of outputs
 	case  XF_CALCULATE:
-		// For now, just import a single hard-coded value
+		// A necessary (but not sufficient) condition for this to be a time series definition
+		// is that the first value is equal to 20.
+		if (int(inargs[TS_START_IDX]) == 20)
+		{
+			// Assume that this is a time series definition and get the number of data points
+			int number_of_data_points = int(inargs[TS_SIZE_IDX]);
+
+			// Load time and data values
+			std::vector<double> times;
+			std::vector<double> values;
+			for (int i = 0; i < number_of_data_points; i++)
+			{
+				times.push_back(inargs[TS_DATA_START_IDX + i]);
+				values.push_back(inargs[TS_DATA_START_IDX + number_of_data_points + i]);
+			}
+
+			// Write data to output file
+			output_file.open("test_output_" + std::to_string(int(inargs[0])) + ".txt");
+			//output_file.open("test_output.txt");
+			for (size_t i = 0; i < times.size(); i++)
+			{
+				//output_file << std::to_string(inargs[i]) << std::endl;
+				output_file << std::to_string(times[i]) << '\t' << std::to_string(values[i]) << std::endl;
+			}
+			output_file.close();
+		}
+
+		// Must import at least one value into GoldSim
 		outargs[0] = 10.0;
 
 		break;
@@ -110,6 +146,7 @@ extern "C" void __declspec(dllexport) BasicInitialConditionsImport(int methodID,
 	// Close any open files; Optionally release any memory that's been allocated
 	// No arguments are passed on this call.
 	case  XF_CLEANUP:
+		
 		break;
 
 	// Error if this point is reached; This means the switch statement did not provide the cases that GoldSim expected.
